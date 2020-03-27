@@ -76,3 +76,16 @@ func NewTaskLog(taskLog *models.TaskLog) (err error) {
 	}
 	return
 }
+
+func NewOrder(order *models.Order) (err error) {
+	if order.OrderId == "" || order.OrderPrice == 0 || order.OrderSum == 0 {
+		err = fmt.Errorf("参数不完整")
+		return
+	}
+	err = models.CreateOrder(order)
+	if err != nil {
+		err = fmt.Errorf("新增记录失败")
+		return
+	}
+	return
+}
