@@ -18,7 +18,7 @@ func SetupRouter() *gin.Engine {
 	r.Use(cors(), limitRate())
 	v1 := r.Group("api/v1")
 	{
-		v1.GET("demo1", controller.Demo1)
+		v1.POST("auth", controller.Auth)
 	}
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"errcode": 4404, "errmsg": "Page not found"})

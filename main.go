@@ -3,6 +3,7 @@ package main
 import (
 	"workApi/config"
 	"workApi/dblayer"
+	"workApi/models"
 	"workApi/routers"
 )
 
@@ -17,6 +18,14 @@ func main() {
 	if err != nil {
 		return
 	}
+	//连接mysql
+	err = dblayer.InitMySQL()
+	if err != nil {
+		return
+	}
+	defer dblayer.DB.Close()
+	//迁移数据库
+	dblayer.DB = dblayer.DB.AutoMigrate(&models.User{})
 	//初始化路由
 	r := routers.SetupRouter()
 	// 启动server
