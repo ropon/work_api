@@ -25,7 +25,7 @@ func main() {
 	}
 	defer dblayer.DB.Close()
 	//迁移数据库
-	dblayer.DB = dblayer.DB.AutoMigrate(&models.User{})
+	dblayer.DB = dblayer.DB.AutoMigrate(&models.User{}, &models.TaskLog{})
 	//初始化路由
 	r := routers.SetupRouter()
 	// 启动server

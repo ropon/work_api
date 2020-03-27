@@ -7,6 +7,7 @@ var CodeType = map[int]string{
 	4001: "参数不完整",
 	4002: "请求过于频繁",
 	4003: "授权异常",
+	4004: "新增异常",
 }
 
 var Cfg *Config

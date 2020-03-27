@@ -19,6 +19,7 @@ func SetupRouter() *gin.Engine {
 	v1 := r.Group("api/v1")
 	{
 		v1.POST("auth", controller.Auth)
+		v1.POST("task", controller.Task)
 	}
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"errcode": 4404, "errmsg": "Page not found"})

@@ -58,6 +58,21 @@ func CheckAuth(token string) (resMap map[string]interface{}, err error) {
 		//fmt.Println("redis cache")
 		//反序列化
 		_ = json.Unmarshal([]byte(redisCache.(string)), &resMap)
+		//序列化反序列化后变成float64
+		resMap["uid"] = uint(resMap["uid"].(float64))
+	}
+	return
+}
+
+func NewTaskLog(taskLog *models.TaskLog) (err error) {
+	if (taskLog.XiuJin == 0 && taskLog.XueBei == 0) || taskLog.Note == "" {
+		err = fmt.Errorf("参数不完整")
+		return
+	}
+	err = models.CreateTaskLog(taskLog)
+	if err != nil {
+		err = fmt.Errorf("新增记录失败")
+		return
 	}
 	return
 }
