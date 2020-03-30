@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"workApi/config"
 	"workApi/dblayer"
 	"workApi/models"
@@ -9,18 +10,21 @@ import (
 
 func main() {
 	//初始化配置文件
-	err := config.InitConf("./config/config.conf")
+	err := config.InitConf("./config.conf")
 	if err != nil {
+		fmt.Println("解析配置文件异常")
 		return
 	}
 	//连接redis
 	err = dblayer.InitRedis()
 	if err != nil {
+		fmt.Println("连接redis数据库异常")
 		return
 	}
 	//连接mysql
 	err = dblayer.InitMySQL()
 	if err != nil {
+		fmt.Println("连接mysql数据库异常")
 		return
 	}
 	defer dblayer.DB.Close()

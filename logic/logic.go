@@ -38,11 +38,11 @@ func CheckAuth(token string) (resMap map[string]interface{}, err error) {
 		var resUser models.User
 		err = models.GetUser(&resUser, user.PhoneNum, user.MachineId)
 		if err != nil {
-			err = fmt.Errorf("未授权")
+			err = fmt.Errorf("手机号:%s,机器码:%s 未授权", user.PhoneNum, user.MachineId)
 			return
 		}
 		if resUser.ExpiryTime.Sub(time.Now()).Seconds() <= 0 {
-			err = fmt.Errorf("授权已过期")
+			err = fmt.Errorf("手机号:%s,机器码:%s 授权已过期", user.PhoneNum, user.MachineId)
 			return
 		}
 		resMap = map[string]interface{}{

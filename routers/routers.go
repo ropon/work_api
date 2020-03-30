@@ -2,17 +2,19 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"io"
 	"net/http"
+	"os"
 	"workApi/controller"
 )
 
 func SetupRouter() *gin.Engine {
 	//记录日志
-	//gin.DisableConsoleColor()
-	//f, _ := os.Create("./workApi.log")
-	//gin.DefaultWriter = io.MultiWriter(f)
+	gin.DisableConsoleColor()
+	f, _ := os.Create("./workApi.log")
+	gin.DefaultWriter = io.MultiWriter(f)
 	//生产模式
-	//gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	//跨域 频率控制
 	r.Use(cors(), limitRate())
