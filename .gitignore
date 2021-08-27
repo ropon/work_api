@@ -16,3 +16,8 @@ config.conf
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+log
+work_api
+conf/work_api.conf
+tmp
