@@ -53,7 +53,7 @@ type Config struct {
 }
 
 func initConfigFile(filename string, cfg *Config) error {
-	fmt.Println("filename", filename)
+	//fmt.Println("filename", filename)
 	_, err := os.Stat(filename)
 	if err != nil {
 		fmt.Println("ReadFile: ", err.Error())
@@ -69,7 +69,7 @@ func initConfigFile(filename string, cfg *Config) error {
 		log.Println(err.Error())
 		return err
 	}
-	fmt.Println("config :", *cfg)
+	//fmt.Println("config :", *cfg)
 	return nil
 }
 
@@ -135,7 +135,8 @@ func Init() (err error) {
 	if err != nil {
 		return
 	}
-	return initMysql()
+	return nil
+	//return initMysql()
 
 	//return initRedis()
 }
