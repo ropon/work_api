@@ -19,6 +19,44 @@ const (
 	ErrCodeGeneralFail  = 2002
 )
 
+func ColorForStatus(code int) string {
+	switch {
+	case code >= 200 && code <= 299:
+		return logger.Green
+	case code >= 300 && code <= 399:
+		return logger.White
+	case code >= 400 && code <= 499:
+		return logger.Yellow
+	default:
+		return logger.Red
+	}
+}
+
+func ColorForMethod(method string) string {
+	switch {
+	case method == "GET":
+		return logger.Blue
+	case method == "POST":
+		return logger.Cyan
+	case method == "PUT":
+		return logger.Yellow
+	case method == "DELETE":
+		return logger.Red
+	case method == "PATCH":
+		return logger.Green
+	case method == "HEAD":
+		return logger.Magenta
+	case method == "OPTIONS":
+		return logger.White
+	default:
+		return logger.Reset
+	}
+}
+
+func ColorForReset() string {
+	return logger.Reset
+}
+
 func GetOffsetAndLimit(PageSize, PageNum int64) (int64, int64) {
 	if PageSize < 1 {
 		PageSize = 10
@@ -48,9 +86,17 @@ func GinRsp(c *gin.Context, statusCode int, obj interface{}) {
 	objData := fmt.Sprintf("%+v", obj)
 	clientIP := c.ClientIP()
 	method := c.Request.Method
+	statusColor := ColorForStatus(statusCode)
+	methodColor := ColorForMethod(method)
+	resetColor := ColorForReset()
 	userEmail := c.Request.Header.Get("user_email")
-	logger.Info("[GIN-RSP] %s %s %s %d [ip:%s] [user_email:%s] [rsp:%s]",
-		method, c.Request.Host, Cuts(requestData, MaxLogDataLen), statusCode, clientIP, userEmail, Cuts(objData, MaxLogDataLen))
+	logger.Info("[GIN-RSP] %s%s%s %s%d%s %s [ip:%s] [user_email:%s] [rsp:%s]",
+		methodColor, method, resetColor,
+		statusColor, statusCode, resetColor,
+		Cuts(requestData, MaxLogDataLen),
+		clientIP,
+		userEmail,
+		Cuts(objData, MaxLogDataLen))
 	c.JSON(statusCode, obj)
 }
 

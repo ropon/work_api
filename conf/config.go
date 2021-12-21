@@ -100,10 +100,6 @@ func initGormDbPool(cfg *MysqlCfg, setLog bool) (*gorm.DB, error) {
 		db.SetLogger(logger.Log)
 	}
 	db.SingularTable(true)
-	err = db.DB().Ping()
-	if err != nil {
-		return nil, err
-	}
 	return db, nil
 }
 
