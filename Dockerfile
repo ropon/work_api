@@ -1,4 +1,4 @@
-FROM xxx/centos:latest
+FROM centos:centos7
 
 ENV ServiceName work_api
 
