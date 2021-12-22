@@ -1,0 +1,235 @@
+basePath: /
+definitions:
+  logics.CUServiceReq:
+    properties:
+      author_email:
+        type: string
+      ops_admin:
+        type: string
+      ports:
+        type: string
+      svc_name:
+        type: string
+      svc_type:
+        type: string
+      user_email:
+        type: string
+    required:
+    - author_email
+    - ports
+    - svc_name
+    - svc_type
+    type: object
+  logics.ServiceReq:
+    properties:
+      author_email:
+        description: 服务负责人
+        type: string
+      create_time:
+        type: string
+      id:
+        type: integer
+      page_num:
+        type: integer
+      page_size:
+        type: integer
+      ports:
+        description: 服务端口
+        type: string
+      svc_name:
+        description: 服务名称
+        type: string
+      svc_type:
+        description: 服务类型
+        type: string
+      update_time:
+        type: string
+    type: object
+  logics.ServiceRes:
+    properties:
+      service_list:
+        items:
+          $ref: '#/definitions/models.Service'
+        type: array
+      total_count:
+        type: integer
+    type: object
+  models.Service:
+    properties:
+      author_email:
+        description: 服务负责人
+        type: string
+      create_time:
+        type: string
+      id:
+        type: integer
+      ports:
+        description: 服务端口
+        type: string
+      svc_name:
+        description: 服务名称
+        type: string
+      svc_type:
+        description: 服务类型
+        type: string
+      update_time:
+        type: string
+    type: object
+host: work-api.xxx.com
+info:
+  contact:
+    email: ropon@xxx.com
+    name: Ropon
+    url: https://www.ropon.top
+  description: 后端快速Api脚手架
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: work_api
+  version: "1.0"
+paths:
+  /work_api/api/v1/service:
+    patch:
+      consumes:
+      - application/json
+      description: 更新服务部分参数接口
+      parameters:
+      - description: 请求参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/logics.ServiceReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 更新成功返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 更新服务部分参数接口
+      tags:
+      - 服务相关接口
+    post:
+      consumes:
+      - application/json
+      description: 创建服务接口
+      parameters:
+      - description: 请求参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/logics.CUServiceReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 创建成功返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 创建服务接口
+      tags:
+      - 服务相关接口
+    put:
+      consumes:
+      - application/json
+      description: 更新服务全部参数接口
+      parameters:
+      - description: 请求参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/logics.CUServiceReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 更新成功返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 更新服务全部参数接口
+      tags:
+      - 服务相关接口
+  /work_api/api/v1/service/{id}:
+    delete:
+      description: 删除服务接口
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: 删除服务接口
+      tags:
+      - 服务相关接口
+    get:
+      description: 获取单个服务接口
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 服务返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 获取单个服务接口
+      tags:
+      - 服务相关接口
+  /work_api/api/v1/services:
+    get:
+      description: 获取服务列表接口
+      parameters:
+      - description: 服务负责人
+        in: query
+        name: author_email
+        type: string
+      - in: query
+        name: create_time
+        type: string
+      - in: query
+        name: id
+        type: integer
+      - in: query
+        name: page_num
+        type: integer
+      - in: query
+        name: page_size
+        type: integer
+      - description: 服务端口
+        in: query
+        name: ports
+        type: string
+      - description: 服务名称
+        in: query
+        name: svc_name
+        type: string
+      - description: 服务类型
+        in: query
+        name: svc_type
+        type: string
+      - in: query
+        name: update_time
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 服务列表返回结果
+          schema:
+            $ref: '#/definitions/logics.ServiceRes'
+      summary: 获取服务列表接口
+      tags:
+      - 服务相关接口
+swagger: "2.0"
