@@ -13,7 +13,7 @@ require (
 	github.com/jinzhu/gorm v1.9.17-0.20210521233931-90f139aba3a6
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.13 // indirect
-	github.com/ropon/logger v0.0.0-20211221054436-e3b46803cf7c
+	github.com/ropon/logger v0.0.0-20211222031411-31725717b96e
 	github.com/swaggo/gin-swagger v1.3.3
 	github.com/swaggo/swag v1.7.6
 	go.etcd.io/etcd/client/v3 v3.5.1
