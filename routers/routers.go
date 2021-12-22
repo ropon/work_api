@@ -8,7 +8,10 @@ import (
 	"github.com/ropon/logger"
 	"github.com/ropon/work_api/conf"
 	"github.com/ropon/work_api/controllers"
+	_ "github.com/ropon/work_api/docs"
 	"github.com/ropon/work_api/utils"
+	gs "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"net/http"
 	"os"
 	"os/signal"
@@ -25,6 +28,7 @@ func setupRouter() *gin.Engine {
 	engine.Use(gin.Recovery())
 	pprof.Register(engine)
 
+	engine.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
 	v1 := engine.Group("/work_api/api/v1")
 	{
 		v1.GET("/hi", controllers.Hi)

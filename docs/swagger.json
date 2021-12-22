@@ -1,0 +1,354 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "后端快速Api脚手架",
+        "title": "work_api",
+        "contact": {
+            "name": "Ropon",
+            "url": "https://www.ropon.top",
+            "email": "ropon@xxx.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "work-api.xxx.com",
+    "basePath": "/",
+    "paths": {
+        "/work_api/api/v1/service": {
+            "put": {
+                "description": "更新服务全部参数接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "更新服务全部参数接口",
+                "parameters": [
+                    {
+                        "description": "请求参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/logics.CUServiceReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "更新成功返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "创建服务接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "创建服务接口",
+                "parameters": [
+                    {
+                        "description": "请求参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/logics.CUServiceReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "创建成功返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "更新服务部分参数接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "更新服务部分参数接口",
+                "parameters": [
+                    {
+                        "description": "请求参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/logics.ServiceReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "更新成功返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
+                        }
+                    }
+                }
+            }
+        },
+        "/work_api/api/v1/service/{id}": {
+            "get": {
+                "description": "获取单个服务接口",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "获取单个服务接口",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "服务返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "删除服务接口",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "删除服务接口",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/work_api/api/v1/services": {
+            "get": {
+                "description": "获取服务列表接口",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "获取服务列表接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "服务负责人",
+                        "name": "author_email",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "create_time",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_num",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "服务端口",
+                        "name": "ports",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "服务名称",
+                        "name": "svc_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "服务类型",
+                        "name": "svc_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "update_time",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "服务列表返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/logics.ServiceRes"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "logics.CUServiceReq": {
+            "type": "object",
+            "required": [
+                "author_email",
+                "ports",
+                "svc_name",
+                "svc_type"
+            ],
+            "properties": {
+                "author_email": {
+                    "type": "string"
+                },
+                "ops_admin": {
+                    "type": "string"
+                },
+                "ports": {
+                    "type": "string"
+                },
+                "svc_name": {
+                    "type": "string"
+                },
+                "svc_type": {
+                    "type": "string"
+                },
+                "user_email": {
+                    "type": "string"
+                }
+            }
+        },
+        "logics.ServiceReq": {
+            "type": "object",
+            "properties": {
+                "author_email": {
+                    "description": "服务负责人",
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "page_num": {
+                    "type": "integer"
+                },
+                "page_size": {
+                    "type": "integer"
+                },
+                "ports": {
+                    "description": "服务端口",
+                    "type": "string"
+                },
+                "svc_name": {
+                    "description": "服务名称",
+                    "type": "string"
+                },
+                "svc_type": {
+                    "description": "服务类型",
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string"
+                }
+            }
+        },
+        "logics.ServiceRes": {
+            "type": "object",
+            "properties": {
+                "service_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Service"
+                    }
+                },
+                "total_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.Service": {
+            "type": "object",
+            "properties": {
+                "author_email": {
+                    "description": "服务负责人",
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ports": {
+                    "description": "服务端口",
+                    "type": "string"
+                },
+                "svc_name": {
+                    "description": "服务名称",
+                    "type": "string"
+                },
+                "svc_type": {
+                    "description": "服务类型",
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

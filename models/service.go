@@ -8,12 +8,11 @@ import (
 )
 
 type Service struct {
-	//定义结构体时，考虑内存对齐相同类型尽量放到一起
 	Id            uint      `json:"id" form:"id" gorm:"primary_key,AUTO_INCREMENT"`
-	SvcName       string    `json:"svc_name" form:"svc_name" gorm:"column:svc_name" sql:"unique;not null"`
-	SvcType       string    `json:"svc_type" form:"svc_type" gorm:"column:svc_type" sql:"not null"`
-	AuthorEmail   string    `json:"author_email" form:"author_email" gorm:"column:author_email" sql:"not null"`
-	Ports         string    `json:"ports" form:"ports" gorm:"column:ports" sql:"unique;not null"`
+	SvcName       string    `json:"svc_name" form:"svc_name" gorm:"column:svc_name" sql:"unique;not null"`      //服务名称
+	SvcType       string    `json:"svc_type" form:"svc_type" gorm:"column:svc_type" sql:"not null"`             //服务类型
+	AuthorEmail   string    `json:"author_email" form:"author_email" gorm:"column:author_email" sql:"not null"` //服务负责人
+	Ports         string    `json:"ports" form:"ports" gorm:"column:ports" sql:"unique;not null"`               //服务端口
 	CreateTimeStr string    `json:"create_time" gorm:"-"`
 	UpdateTimeStr string    `json:"update_time" gorm:"-"`
 	CreateTime    time.Time `json:"-" gorm:"column:create_time" sql:"type:datetime"`

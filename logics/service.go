@@ -25,8 +25,8 @@ type ServiceReq struct {
 }
 
 type ServiceRes struct {
-	TotalCount  int64       `json:"total_count"`
-	ServiceList interface{} `json:"service_list"`
+	TotalCount  int64              `json:"total_count"`
+	ServiceList models.ServiceList `json:"service_list"`
 }
 
 func (bp *BaseData) Init(userEmail, opsAdmin string) {
