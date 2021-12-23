@@ -22,15 +22,15 @@ func ginLogger() gin.HandlerFunc {
 		statusColor := logger.ColorForStatus(statusCode)
 		methodColor := logger.ColorForMethod(method)
 		resetColor := logger.Reset
+		traceId := c.Request.Header.Get("trace_id")
 		userEmail := c.Request.Header.Get("user_email")
 		requestData := utils.GetRequestData(c)
-		logger.Info("[GIN] %s%s%s %s%s %s%d%s cost:%.03f [ip:%s] [user_email:%s]",
+		logger.Info("[GIN] %s%s%s %s%s %s%d%s cost:%.03f [ip:%s] [trace_id:%s] [user_email:%s]",
 			methodColor, method, resetColor,
 			c.Request.Host,
 			utils.Cuts(requestData, utils.MaxLogDataLen),
 			statusColor, statusCode, resetColor,
 			end.Sub(start).Seconds(),
-			clientIP,
-			userEmail)
+			clientIP, traceId, userEmail)
 	}
 }
