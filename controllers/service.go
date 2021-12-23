@@ -149,7 +149,8 @@ func GetServices(c *gin.Context) {
 		return
 	}
 
-	resList, err := logics.GetServices(req)
+	ctx := utils.ExtractStdContext(nil, c.Request.Header)
+	resList, err := logics.GetServices(ctx, req)
 	if err != nil {
 		utils.GinErrRsp(c, utils.ErrCodeGeneralFail, err.Error())
 		return

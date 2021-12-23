@@ -1,6 +1,7 @@
 package logics
 
 import (
+	"context"
 	"fmt"
 	"github.com/ropon/work_api/models"
 )
@@ -104,9 +105,9 @@ func PatchUpdateService(id uint, req *ServiceReq) (interface{}, error) {
 }
 
 //获取服务列表
-func GetServices(req *ServiceReq) (*ServiceRes, error) {
+func GetServices(ctx context.Context,req *ServiceReq) (*ServiceRes, error) {
 	s := req.Service
-	sl, count, err := s.List(req.PageSize, req.PageNum)
+	sl, count, err := s.List(ctx,req.PageSize, req.PageNum)
 	if err != nil {
 		return nil, err
 	}

@@ -25,10 +25,15 @@ func setupRouter() *gin.Engine {
 	engine := gin.New()
 	engine.Use(ginLogger())
 	engine.Use(cors())
+	engine.Use(utils.TraceHttpRoot(conf.SERVERNAME, conf.Cfg.External["JaegerAgentAddr"]))
 	engine.Use(gin.Recovery())
 	pprof.Register(engine)
 
 	engine.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
+	backend := engine.Group("/backend")
+	{
+		backend.Any(":server/*action", controllers.HttpProxy)
+	}
 	v1 := engine.Group("/work_api/api/v1")
 	{
 		v1.GET("/hi", controllers.Hi)
@@ -47,9 +52,9 @@ func setupRouter() *gin.Engine {
 	return engine
 }
 
-func Run() {
+func Run(addr string) {
 	srv := &http.Server{
-		Addr:    conf.Cfg.Listen,
+		Addr:    addr,
 		Handler: setupRouter(),
 	}
 	go func() {
@@ -57,6 +62,7 @@ func Run() {
 			logger.Error("listen error: %s\n", err.Error())
 		}
 	}()
+	fmt.Printf("[GIN-debug] Listening and serving HTTP on %s\n", addr)
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt, syscall.SIGINT, syscall.SIGTERM, syscall.SIGUSR2)

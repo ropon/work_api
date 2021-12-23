@@ -1,6 +1,7 @@
 package models
 
 import (
+	"context"
 	"fmt"
 	"github.com/ropon/work_api/conf"
 	"github.com/ropon/work_api/utils"
@@ -73,7 +74,9 @@ func (s *Service) GetByName() (err error) {
 }
 
 // List 查(get /service)多个
-func (s *Service) List(PageSize, PageNum int64) (list ServiceList, count int64, err error) {
+func (s *Service) List(ctx context.Context, PageSize, PageNum int64) (list ServiceList, count int64, err error) {
+	sp, _ := utils.ExtractChildSpan("db:get services", ctx)
+	defer sp.Finish()
 	list = make(ServiceList, 0)
 	//默认精确匹配
 	db := conf.MysqlDb.Where(s)

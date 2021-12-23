@@ -26,5 +26,5 @@ func main() {
 		return
 	}
 
-	routers.Run()
+	routers.Run(conf.Cfg.Listen)
 }
