@@ -7,6 +7,8 @@
 - redis:go-redis
 - etcd:go.etcd.io
 - kafka:sarama
+- swagger
+- jaeger
 
 #### 2、usage
 
