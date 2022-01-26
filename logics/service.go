@@ -105,9 +105,9 @@ func PatchUpdateService(id uint, req *ServiceReq) (interface{}, error) {
 }
 
 //获取服务列表
-func GetServices(ctx context.Context,req *ServiceReq) (*ServiceRes, error) {
+func GetServices(ctx context.Context, req *ServiceReq) (*ServiceRes, error) {
 	s := req.Service
-	sl, count, err := s.List(ctx,req.PageSize, req.PageNum)
+	sl, count, err := s.List(ctx, req.PageSize, req.PageNum)
 	if err != nil {
 		return nil, err
 	}

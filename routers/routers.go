@@ -6,7 +6,6 @@ import (
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/ropon/logger"
-	"github.com/ropon/work_api/conf"
 	"github.com/ropon/work_api/controllers"
 	_ "github.com/ropon/work_api/docs"
 	"github.com/ropon/work_api/utils"
@@ -25,7 +24,7 @@ func setupRouter() *gin.Engine {
 	engine := gin.New()
 	engine.Use(ginLogger())
 	engine.Use(cors())
-	engine.Use(utils.TraceHttpRoot(conf.SERVERNAME, conf.Cfg.External["JaegerAgentAddr"]))
+	//engine.Use(utils.TraceHttpRoot(conf.SERVERNAME, conf.Cfg.External["JaegerAgentAddr"]))
 	engine.Use(gin.Recovery())
 	pprof.Register(engine)
 
@@ -68,7 +67,7 @@ func Run(addr string) {
 	signal.Notify(quit, os.Interrupt, syscall.SIGINT, syscall.SIGTERM, syscall.SIGUSR2)
 	<-quit
 	logger.Info("Shutdown Server ...")
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx); err != nil {
 		logger.Error("Server Shutdown error: %s", err.Error())
