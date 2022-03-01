@@ -15,7 +15,7 @@ require (
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/ropon/logger v0.0.0-20211222031411-31725717b96e
+	github.com/ropon/logger v1.0.0
 	github.com/swaggo/gin-swagger v1.3.3
 	github.com/swaggo/swag v1.7.6
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
