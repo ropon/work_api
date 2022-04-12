@@ -17,7 +17,7 @@ import (
 // @license.name Apache 2.0
 // @license.url https://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host work-api.xxx.com
+// @host work-api.xxx.com:2345
 // @BasePath /
 func main() {
 	err := conf.Init()

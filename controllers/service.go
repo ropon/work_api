@@ -84,9 +84,10 @@ func DeleteService(c *gin.Context) {
 // @Tags 服务相关接口
 // @Accept application/json
 // @Produce application/json
+// @Param id path uint true "id"
 // @Param data body logics.CUServiceReq true "请求参数"
 // @Success 200 {object} models.Service "更新成功返回结果"
-// @Router /work_api/api/v1/service [put]
+// @Router /work_api/api/v1/service/{id} [put]
 func UpdateService(c *gin.Context) {
 	id, flag := checkParamsId(c)
 	if !flag {
@@ -113,9 +114,10 @@ func UpdateService(c *gin.Context) {
 // @Tags 服务相关接口
 // @Accept application/json
 // @Produce application/json
+// @Param id path uint true "id"
 // @Param data body logics.ServiceReq true "请求参数"
 // @Success 200 {object} models.Service "更新成功返回结果"
-// @Router /work_api/api/v1/service [patch]
+// @Router /work_api/api/v1/service/{id} [patch]
 func PatchUpdateService(c *gin.Context) {
 	id, flag := checkParamsId(c)
 	if !flag {
@@ -142,7 +144,7 @@ func PatchUpdateService(c *gin.Context) {
 // @Produce application/json
 // @Param data query logics.ServiceReq true "请求参数"
 // @Success 200 {object} logics.ServiceRes "服务列表返回结果"
-// @Router /work_api/api/v1/services [get]
+// @Router /work_api/api/v1/service [get]
 func GetServices(c *gin.Context) {
 	req := new(logics.ServiceReq)
 	if !checkData(c, req) {

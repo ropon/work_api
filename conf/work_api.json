@@ -6,13 +6,13 @@
 	},
 	"MysqlCfg": {
 		"work_api": {
-			"MysqlConn": "work_api:xxxxx@tcp(127.0.0.1:3306)/work_api?charset=utf8mb4&parseTime=true&loc=Local",
+			"MysqlConn": "root:ropon.top@tcp(192.168.1.210:3306)/work_api?charset=utf8mb4&parseTime=true&loc=Local",
 			"MysqlConnectPoolSize": 40
 		}
 	},
 	"RedisSetting": {
 		"work_api": {
-			"RedisConn": "db0:6379",
+			"RedisConn": "192.168.1.210:6379",
 			"RedisPasswd": "",
 			"RedisDb": 1
 		}
@@ -23,7 +23,7 @@
 	    "Key1": "Val1",
 	    "work_api1":"127.0.0.1:2346",
 	    "work_api2":"127.0.0.1:2347",
-	    "JaegerAgentAddr": "xxx:6831"
+	    "JaegerAgentAddr": "192.168.1.210:6831"
 	},
 	"ExternalInt64": {
         "Key2": 66

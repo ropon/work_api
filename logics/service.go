@@ -101,6 +101,7 @@ func PatchUpdateService(id uint, req *ServiceReq) (interface{}, error) {
 	if err := do.patch(&s); err != nil {
 		return nil, err
 	}
+	do.Obj.(*models.Service).UpdateTimeStr = s.UpdateTimeStr
 	return do.Obj, nil
 }
 

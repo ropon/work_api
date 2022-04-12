@@ -32,157 +32,6 @@ var doc = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/work_api/api/v1/service": {
-            "put": {
-                "description": "更新服务全部参数接口",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "服务相关接口"
-                ],
-                "summary": "更新服务全部参数接口",
-                "parameters": [
-                    {
-                        "description": "请求参数",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/logics.CUServiceReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "更新成功返回结果",
-                        "schema": {
-                            "$ref": "#/definitions/models.Service"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "创建服务接口",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "服务相关接口"
-                ],
-                "summary": "创建服务接口",
-                "parameters": [
-                    {
-                        "description": "请求参数",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/logics.CUServiceReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "创建成功返回结果",
-                        "schema": {
-                            "$ref": "#/definitions/models.Service"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "description": "更新服务部分参数接口",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "服务相关接口"
-                ],
-                "summary": "更新服务部分参数接口",
-                "parameters": [
-                    {
-                        "description": "请求参数",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/logics.ServiceReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "更新成功返回结果",
-                        "schema": {
-                            "$ref": "#/definitions/models.Service"
-                        }
-                    }
-                }
-            }
-        },
-        "/work_api/api/v1/service/{id}": {
-            "get": {
-                "description": "获取单个服务接口",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "服务相关接口"
-                ],
-                "summary": "获取单个服务接口",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "服务返回结果",
-                        "schema": {
-                            "$ref": "#/definitions/models.Service"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "删除服务接口",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "服务相关接口"
-                ],
-                "summary": "删除服务接口",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/work_api/api/v1/services": {
             "get": {
                 "description": "获取服务列表接口",
                 "produces": [
@@ -248,6 +97,169 @@ var doc = `{
                         "description": "服务列表返回结果",
                         "schema": {
                             "$ref": "#/definitions/logics.ServiceRes"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "创建服务接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "创建服务接口",
+                "parameters": [
+                    {
+                        "description": "请求参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/logics.CUServiceReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "创建成功返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
+                        }
+                    }
+                }
+            }
+        },
+        "/work_api/api/v1/service/{id}": {
+            "get": {
+                "description": "获取单个服务接口",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "获取单个服务接口",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "服务返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "更新服务全部参数接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "更新服务全部参数接口",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "请求参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/logics.CUServiceReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "更新成功返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "删除服务接口",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "删除服务接口",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "patch": {
+                "description": "更新服务部分参数接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "服务相关接口"
+                ],
+                "summary": "更新服务部分参数接口",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "请求参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/logics.ServiceReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "更新成功返回结果",
+                        "schema": {
+                            "$ref": "#/definitions/models.Service"
                         }
                     }
                 }
@@ -379,7 +391,7 @@ type swaggerInfo struct {
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
 	Version:     "1.0",
-	Host:        "work-api.xxx.com",
+	Host:        "work-api.xxx.com:2345",
 	BasePath:    "/",
 	Schemes:     []string{},
 	Title:       "work_api",
