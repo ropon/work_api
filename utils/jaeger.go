@@ -49,7 +49,7 @@ func TraceHttpRoot(service, agentAddr string) gin.HandlerFunc {
 	})
 	hn, _ := os.Hostname()
 	return func(c *gin.Context) {
-		name := fmt.Sprintf("HTTP %s %s%s", c.Request.Method, c.Request.Host, c.Request.URL.Path)
+		name := fmt.Sprintf("%s %s", c.Request.Method, c.Request.URL.Path)
 		sp := tracer.StartSpan(name)
 		defer sp.Finish()
 		Inject(sp.Context(), c.Request.Header)
@@ -68,7 +68,7 @@ func TraceHttpSpan(service, agentAddr string) gin.HandlerFunc {
 		opentracing.SetGlobalTracer(tracer)
 	})
 	return func(c *gin.Context) {
-		name := fmt.Sprintf("HTTP %s %s%s", c.Request.Method, c.Request.Host, c.Request.URL.Path)
+		name := fmt.Sprintf("%s %s", c.Request.Method, c.Request.URL.Path)
 		sp, err := ExtractChildSpan(name, c.Request.Header)
 		if err != nil {
 			return

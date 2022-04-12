@@ -6,6 +6,7 @@ import (
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/ropon/logger"
+	"github.com/ropon/work_api/conf"
 	"github.com/ropon/work_api/controllers"
 	_ "github.com/ropon/work_api/docs"
 	"github.com/ropon/work_api/utils"
@@ -24,7 +25,7 @@ func setupRouter() *gin.Engine {
 	engine := gin.New()
 	engine.Use(ginLogger())
 	engine.Use(cors())
-	//engine.Use(utils.TraceHttpRoot(conf.SERVERNAME, conf.Cfg.External["JaegerAgentAddr"]))
+	engine.Use(utils.TraceHttpRoot(conf.SERVERNAME, conf.Cfg.External["JaegerAgentAddr"]))
 	engine.Use(gin.Recovery())
 	pprof.Register(engine)
 

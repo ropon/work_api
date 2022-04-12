@@ -19,5 +19,5 @@ config.conf
 
 log
 work_api
-conf/work_api.conf
+conf/work_api.json
 tmp

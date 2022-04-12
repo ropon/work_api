@@ -88,11 +88,11 @@ func (s *Service) List(ctx context.Context, PageSize, PageNum int64) (list Servi
 		db = conf.MysqlDb.Where("ports like ?", fmt.Sprintf(`%%%s%%`, s.Ports))
 	}
 	//获取条件匹配后总记录数
-	err = db.Find(&ServiceList{}).Count(&count).Error
-	if err != nil {
-		return nil, count, err
-	}
+	//err = db.Find(&ServiceList{}).Count(&count).Error
+	//if err != nil {
+	//	return nil, count, err
+	//}
 	offset, limit := utils.GetOffsetAndLimit(PageSize, PageNum)
-	err = db.Offset(offset).Limit(limit).Find(&list).Error
+	err = db.Model(s).Count(&count).Offset(offset).Limit(limit).Find(&list).Error
 	return list, count, err
 }

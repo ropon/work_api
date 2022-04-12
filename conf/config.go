@@ -216,8 +216,8 @@ func Init() (err error) {
 	if err != nil {
 		return
 	}
-	return nil
-	//return initMysql()
+	//return nil
+	return initMysql()
 	//return initKafka()
 	//return initEtcd()
 

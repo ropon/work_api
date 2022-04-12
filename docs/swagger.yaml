@@ -75,7 +75,7 @@ definitions:
       update_time:
         type: string
     type: object
-host: work-api.xxx.com
+host: work-api.xxx.com:2345
 info:
   contact:
     email: ropon@xxx.com
@@ -89,105 +89,6 @@ info:
   version: "1.0"
 paths:
   /work_api/api/v1/service:
-    patch:
-      consumes:
-      - application/json
-      description: 更新服务部分参数接口
-      parameters:
-      - description: 请求参数
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/logics.ServiceReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 更新成功返回结果
-          schema:
-            $ref: '#/definitions/models.Service'
-      summary: 更新服务部分参数接口
-      tags:
-      - 服务相关接口
-    post:
-      consumes:
-      - application/json
-      description: 创建服务接口
-      parameters:
-      - description: 请求参数
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/logics.CUServiceReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 创建成功返回结果
-          schema:
-            $ref: '#/definitions/models.Service'
-      summary: 创建服务接口
-      tags:
-      - 服务相关接口
-    put:
-      consumes:
-      - application/json
-      description: 更新服务全部参数接口
-      parameters:
-      - description: 请求参数
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/logics.CUServiceReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 更新成功返回结果
-          schema:
-            $ref: '#/definitions/models.Service'
-      summary: 更新服务全部参数接口
-      tags:
-      - 服务相关接口
-  /work_api/api/v1/service/{id}:
-    delete:
-      description: 删除服务接口
-      parameters:
-      - description: id
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      summary: 删除服务接口
-      tags:
-      - 服务相关接口
-    get:
-      description: 获取单个服务接口
-      parameters:
-      - description: id
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 服务返回结果
-          schema:
-            $ref: '#/definitions/models.Service'
-      summary: 获取单个服务接口
-      tags:
-      - 服务相关接口
-  /work_api/api/v1/services:
     get:
       description: 获取服务列表接口
       parameters:
@@ -230,6 +131,114 @@ paths:
           schema:
             $ref: '#/definitions/logics.ServiceRes'
       summary: 获取服务列表接口
+      tags:
+      - 服务相关接口
+    post:
+      consumes:
+      - application/json
+      description: 创建服务接口
+      parameters:
+      - description: 请求参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/logics.CUServiceReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 创建成功返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 创建服务接口
+      tags:
+      - 服务相关接口
+  /work_api/api/v1/service/{id}:
+    delete:
+      description: 删除服务接口
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: 删除服务接口
+      tags:
+      - 服务相关接口
+    get:
+      description: 获取单个服务接口
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 服务返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 获取单个服务接口
+      tags:
+      - 服务相关接口
+    patch:
+      consumes:
+      - application/json
+      description: 更新服务部分参数接口
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: 请求参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/logics.ServiceReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 更新成功返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 更新服务部分参数接口
+      tags:
+      - 服务相关接口
+    put:
+      consumes:
+      - application/json
+      description: 更新服务全部参数接口
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: 请求参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/logics.CUServiceReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 更新成功返回结果
+          schema:
+            $ref: '#/definitions/models.Service'
+      summary: 更新服务全部参数接口
       tags:
       - 服务相关接口
 swagger: "2.0"
