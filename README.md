@@ -13,7 +13,8 @@
 #### 2、usage
 
 ```shell
-bash new_project.sh testpro
+#第一个参数服务名称 第二个参数监听端口
+bash new_project.sh testpro 8866
 ```
 
 #### 3、dev
