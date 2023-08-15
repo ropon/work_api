@@ -17,6 +17,20 @@ type DbObj struct {
 	Obj
 }
 
+type BaseData struct {
+	UserEmail string `json:"user_email" form:"user_email"`
+	OpsAdmin  string `json:"ops_admin" form:"ops_admin"`
+}
+
+func (bp *BaseData) Init(userEmail, opsAdmin string) {
+	if bp.UserEmail == "" {
+		bp.UserEmail = userEmail
+	}
+	if bp.OpsAdmin == "" {
+		bp.OpsAdmin = opsAdmin
+	}
+}
+
 func (do *DbObj) get() error {
 	err := do.Obj.Get()
 	if err != nil {

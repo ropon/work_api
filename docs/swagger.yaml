@@ -167,7 +167,7 @@ paths:
       - application/json
       responses:
         "200":
-          description: ""
+          description: OK
       summary: 删除服务接口
       tags:
       - 服务相关接口

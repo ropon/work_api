@@ -20,6 +20,8 @@ bash new_project.sh testpro 8866
 #### 3、dev
 
 ```shell
+#热加载自动生成swagger文档
+go install github.com/swaggo/swag/cmd/swag@v1.8.12
 cd testpro
 ./air
 ```

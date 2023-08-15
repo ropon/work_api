@@ -120,7 +120,10 @@ func StartChildSpan(name string, parentCtx opentracing.SpanContext) opentracing.
 func Inject(spCtx opentracing.SpanContext, carrier interface{}) {
 	switch t := carrier.(type) {
 	case http.Header:
-		opentracing.GlobalTracer().Inject(spCtx, opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(t))
+		err := opentracing.GlobalTracer().Inject(spCtx, opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(t))
+		if err != nil {
+			return
+		}
 		t.Set("trace_id", spanContextToJaegerContext(spCtx).TraceID().String())
 	}
 }

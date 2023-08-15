@@ -6,11 +6,6 @@ import (
 	"github.com/ropon/work_api/models"
 )
 
-type BaseData struct {
-	UserEmail string `json:"user_email" form:"user_email"`
-	OpsAdmin  string `json:"ops_admin" form:"ops_admin"`
-}
-
 type CUServiceReq struct {
 	SvcName     string `json:"svc_name" form:"svc_name" binding:"required"`
 	SvcType     string `json:"svc_type" form:"svc_type" binding:"required"`
@@ -28,15 +23,6 @@ type ServiceReq struct {
 type ServiceRes struct {
 	TotalCount  int64              `json:"total_count"`
 	ServiceList models.ServiceList `json:"service_list"`
-}
-
-func (bp *BaseData) Init(userEmail, opsAdmin string) {
-	if bp.UserEmail == "" {
-		bp.UserEmail = userEmail
-	}
-	if bp.OpsAdmin == "" {
-		bp.OpsAdmin = opsAdmin
-	}
 }
 
 func initService(req *CUServiceReq) *models.Service {
